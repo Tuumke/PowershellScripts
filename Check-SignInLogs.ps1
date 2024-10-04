@@ -8,7 +8,7 @@
 .NOTES
 	Version: v0.4
 	Author: Tuumke
-	Contributors: purplemonkeymad
+	Contributors: purplemonkeymad, Certain-Community438
 
 	CHANGELOG:
 	v0.4 Make the script more readable after great feedback from purplemonkeymad (reddit)
