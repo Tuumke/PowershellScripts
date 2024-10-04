@@ -11,8 +11,8 @@
 	Contributors: purplemonkeymad, Certain-Community438
 
 	CHANGELOG:
-	v0.5 Changed variable name to signInLogProperties so it reflects better with the Get-command to avoid confusion
-	v0.4 Make the script more readable after great feedback from purplemonkeymad (reddit)
+	v0.5 Changed variable name to signInLogProperties so it reflects better with the Get-command to avoid confusion (Certain-Community438, reddit)
+	v0.4 Make the script more readable after great feedback (purplemonkeymad, reddit)
 	v0.3 Add check for AzureAD Connection and check for opened explorers
 	v0.2 Added extra parameters
 	v0.1 Initial Script
