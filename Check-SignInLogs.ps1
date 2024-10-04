@@ -6,11 +6,12 @@
 .DESCRIPTION
 	Script to check Entra ID SignIn logs on sepcified error code. For example 90094 "Admin consent is required for the permissions requested by this application."
 .NOTES
-	Version: v0.3
+	Version: v0.4
 	Author: Tuumke
-	Contributors: -
+	Contributors: purplemonkeymad
 
 	CHANGELOG:
+	v0.4 Make the script more readable after great feedback from purplemonkeymad (reddit)
 	v0.3 Add check for AzureAD Connection and check for opened explorers
 	v0.2 Added extra parameters
 	v0.1 Initial Script
@@ -61,7 +62,22 @@ if ($Path -match '[\\/]+$'){
 }else{
 	$export = $Path + "\" + $Filename
 }
-$logs = Get-AzureADAuditSignInLogs -Filter "status/errorCode eq $ErrorCode and createdDateTime gt $StartDate" | Select-Object userPrincipalName, appDisplayName, ipAddress, clientAppUsed, @{Name = 'DeviceOS'; Expression = {$_.DeviceDetail.OperatingSystem}}, @{Name = 'Location'; Expression = {$_.Location.City}}, @{Name = 'Country'; Expression = {$_.Location.countryOrRegion}}, @{Name = 'ErrorCode'; Expression = {$_.status.errorCode}}, @{Name = 'failureReaseon'; Expression = {$_.status.failureReason}} | Sort-Object userPrincipalName
+
+$auditLogProperties = @(
+	'userPrincipalName'
+	'appDisplayName'
+	'ipAddress'
+	'clientAppUsed'
+	@{Name = 'DeviceOS'; Expression = {$_.DeviceDetail.OperatingSystem}}
+	@{Name = 'Location'; Expression = {$_.Location.City}}
+	@{Name = 'Country'; Expression = {$_.Location.countryOrRegion}}
+	@{Name = 'ErrorCode'; Expression = {$_.status.errorCode}}
+	@{Name = 'failureReaseon'; Expression = {$_.status.failureReason}}
+)
+
+$logs = Get-AzureADAuditSignInLogs -Filter "status/errorCode eq $ErrorCode and createdDateTime gt $StartDate" | 
+		Select-Object $auditLogProperties | 
+		Sort-Object userPrincipalName
 $logs | Export-Excel -Path $export -NoNumberConversion IPAddress -FreezeTopRow -AutoFilter -AutoSize
 
 ## Opening explorer on the location of the exported file
