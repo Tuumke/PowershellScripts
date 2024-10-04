@@ -63,7 +63,7 @@ if ($Path -match '[\\/]+$'){
 	$export = $Path + "\" + $Filename
 }
 
-$auditLogProperties = @(
+$signInLogProperties = @(
 	'userPrincipalName'
 	'appDisplayName'
 	'ipAddress'
@@ -76,7 +76,7 @@ $auditLogProperties = @(
 )
 
 $logs = Get-AzureADAuditSignInLogs -Filter "status/errorCode eq $ErrorCode and createdDateTime gt $StartDate" | 
-		Select-Object $auditLogProperties | 
+		Select-Object $signInLogProperties | 
 		Sort-Object userPrincipalName
 $logs | Export-Excel -Path $export -NoNumberConversion IPAddress -FreezeTopRow -AutoFilter -AutoSize
 
