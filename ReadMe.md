@@ -13,4 +13,4 @@ Just some powershell scripts i (frequently) use.
 
 | Script  | Description |
 | ------------- | ------------- |
-| Checl-SignInLogs.ps1  | Script used to check signin logs on specific error codes  |
+| Check-SignInLogs.ps1  | Script used to check signin logs on specific error codes  |
