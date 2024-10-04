@@ -6,11 +6,12 @@
 .DESCRIPTION
 	Script to check Entra ID SignIn logs on sepcified error code. For example 90094 "Admin consent is required for the permissions requested by this application."
 .NOTES
-	Version: v0.4
+	Version: v0.5
 	Author: Tuumke
 	Contributors: purplemonkeymad, Certain-Community438
 
 	CHANGELOG:
+	v0.5 Changed variable name to signInLogProperties so it reflects better with the Get-command to avoid confusion
 	v0.4 Make the script more readable after great feedback from purplemonkeymad (reddit)
 	v0.3 Add check for AzureAD Connection and check for opened explorers
 	v0.2 Added extra parameters
