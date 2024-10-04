@@ -7,7 +7,7 @@
 	Script to check Entra ID SignIn logs on sepcified error code. For example 90094 "Admin consent is required for the permissions requested by this application."
 .NOTES
 	Version: v0.3
-	Author: Tijmen Schoemaker
+	Author: Tuumke
 	Contributors: -
 
 	CHANGELOG:
